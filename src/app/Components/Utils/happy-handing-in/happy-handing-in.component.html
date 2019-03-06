@@ -1,0 +1,24 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a>小工具</a></li>
+        <li class="breadcrumb-item active" aria-current="page">快乐交作业</li>
+    </ol>
+</nav>
+
+<div class="container" style="margin-bottom: 1rem; margin-top: 1rem">
+
+    <div class="list-group">
+
+        <a asp-controller="Utils_HHI" asp-action="Issue" asp-route-name="@task.Name" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h4 class="mb-1">@task.Name</h4>
+            </div>
+                <span class="badge badge-pill badge-danger">未提交</span>
+            <div class="dropdown-divider"></div>
+
+                <h5 class="card-text"><small class="text-muted">@p</small></h5>
+            <small class="text-muted">截止日期： @task.DeadLine.ToString()</small>
+        </a>
+    </div>
+</div>
+
