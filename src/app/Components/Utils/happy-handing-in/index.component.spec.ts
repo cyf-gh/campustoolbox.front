@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HappyHandingInComponent } from './happy-handing-in.component';
+import { HappyHandingInComponent } from './index.component';
 
 describe('HappyHandingInComponent', () => {
   let component: HappyHandingInComponent;
