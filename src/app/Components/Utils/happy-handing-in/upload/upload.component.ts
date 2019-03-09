@@ -68,7 +68,6 @@ export class HappyHandingInUploadComponent implements OnInit {
                 );
                 
                 images.push(canvas.toDataURL( imageType, imageQuality ));
-                console.log(images);
             }
             image.src = ( event.target as any ).result;
         };

@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HappyHandingInComponent } from './Components/Utils/happy-handing-in/index.component';
-import { HappyHandingInUploadComponent } from './Components/Utils/happy-handing-in/upload/upload.component';
+import { HappyHandingInComponent } from './components/utils/happy-handing-in/index.component';
+import { HappyHandingInUploadComponent } from './components/utils/happy-handing-in/upload/upload.component';
 import { LoginGuard } from './guard/guard.login';
+import { UtilsComponent } from './components/utils/utils.component';
 
 const routes: Routes = [
-  { path: 'utils', children:[
-    {path: 'happy-handing-in', component: HappyHandingInComponent, children:[
-      { path: 'upload', component: HappyHandingInUploadComponent }
-    ], canActivate: [LoginGuard]}
-  ]},
+  { path: 'utils', component:  UtilsComponent, children:[] },
+  { path: 'utils/happy-handing-in', component: HappyHandingInComponent, children:[], canActivate: [LoginGuard] },
+  { path: 'utils/happy-handing-in/upload', component: HappyHandingInUploadComponent, canActivate: [LoginGuard] }
 ];
 
 @NgModule({
