@@ -5,10 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HappyHandingInComponent } from './components/utils/happy-handing-in/index.component';
-import { HappyHandingInUploadComponent } from './components/utils/happy-handing-in/upload/upload.component';
-import { HappyHandingInUploadImageComponent } from './components/utils/happy-handing-in/upload/image/image.component';
-import { UtilsComponent } from './components/utils/utils.component';
+import { HappyHandingInComponent } from './component/utils/happy-handing-in/index.component';
+import { HappyHandingInUploadComponent } from './component/utils/happy-handing-in/upload/upload.component';
+import { HappyHandingInUploadImageComponent } from './component/utils/happy-handing-in/upload/image/image.component';
+import { UtilsComponent } from './component/utils/utils.component';
+import { CreateWorkComponent } from './component/utils/happy-handing-in/admin/create-work/create-work.component';
+import { CreatePrefixComponent } from './component/utils/happy-handing-in/admin/create-prefix/create-prefix.component';
+import { HhiAdminComponent } from './component/utils/happy-handing-in/admin/hhi-admin/hhi-admin.component';
+import { HHIEditComponent } from './component/utils/happy-handing-in/admin/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { UtilsComponent } from './components/utils/utils.component';
     HappyHandingInComponent,
     HappyHandingInUploadComponent,
     HappyHandingInUploadImageComponent,
-    UtilsComponent
+    UtilsComponent,
+    CreateWorkComponent,
+    CreatePrefixComponent,
+    HhiAdminComponent,
+    HHIEditComponent,
   ],
   imports: [
     BrowserModule,

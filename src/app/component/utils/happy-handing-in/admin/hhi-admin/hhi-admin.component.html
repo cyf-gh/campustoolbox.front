@@ -1,0 +1,17 @@
+<p>
+  Admin!!!!!!!!!!
+</p>
+
+<div>
+  <a class="list-group-item list-group-item-action active"   
+  [routerLink]="[ 'edit' ]"> 
+  Create A Prefix
+  </a>
+</div>
+<div class="list-group" *ngFor="let p of prefixs">
+  <a class="list-group-item list-group-item-action" 
+  [routerLink]="[ 'edit' ]" 
+  [queryParams]="{id: p.id, genre: 'prefix'}"> 
+  {{p.name}}
+  </a>
+</div>
