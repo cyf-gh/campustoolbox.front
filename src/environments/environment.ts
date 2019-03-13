@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  regx_number: /^[0-9]*$/,
+  regx_except_number: /[\D]+/,
+  regx_list: /^[/s/S]*,/,
+  regx_space: /\s+/g
 };
 
 /*

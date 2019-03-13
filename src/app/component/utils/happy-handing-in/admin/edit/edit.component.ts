@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { HappyHandingInService } from 'src/app/service/utils/happy-handing-in.service';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient
-} from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit',
@@ -26,11 +27,19 @@ export class HHIEditComponent implements OnInit {
   async ngOnInit() {
     switch (this.genre) {
       case 'work':
+        if ( this.id.toString() === '0') {
+          this.work.id = "0";
+          break; 
+        }
         await this.hhi.getWorkListAsync().then((works) => {
           this.work = works.find(p => p.id.toString() === this.id.toString());
         });
         break;
         case 'prefix':
+        if ( this.id.toString() === '0') {
+          this.prefix.id = "0";
+          break;
+        }
         await this.hhi.getPrefixsAsync().then((prefixs) => {
           this.prefix = prefixs.find( p => p.id.toString() === this.id.toString() );
         });
@@ -41,10 +50,42 @@ export class HHIEditComponent implements OnInit {
     }
   }
 
-  submit() {
-    this.prefix.memberNameList = this.prefix.memberNameList.toString().split(',');
-    this.prefix.includeList = this.prefix.includeList.toString().split(',');
-    this.prefix.excludeList = this.prefix.excludeList.toString().split(',');
+  parseInvalidInputPrefix() {
+    let isValid = true;
+    if ( environment.regx_except_number.test(this.prefix.start) ) {
+      alert('Start is contains non number chars, please input again');
+      isValid = false;
+    }
+    if ( environment.regx_except_number.test(this.prefix.end) ) {
+      alert('End is contains non number chars, please input again');
+      isValid = false;
+    }
+
+    this.prefix.memberNameList = this.prefix.memberNameList.toString().replace(environment.regx_space, '').split(',');
+    this.prefix.includeList = this.prefix.includeList.toString().replace(environment.regx_space, '').split(',');
+    this.prefix.excludeList = this.prefix.excludeList.toString().replace(environment.regx_space, '').split(',');
+
+    for ( let i = 0; i < this.prefix.excludeList.length; ++i ) {
+      if ( environment.regx_except_number.test(this.prefix.excludeList[i]) ) {
+        alert( this.prefix.excludeList[i] + ' is not a index' + '\n' + 'At ' + i.toString() + ' Pos' );
+        isValid = false;
+      }
+    }
+    for ( let i = 0; i < this.prefix.includeList.length; ++i ) {
+      if ( environment.regx_except_number.test(this.prefix.includeList[i]) ) {
+        alert( this.prefix.includeList[i] + ' is not a index' + '\n' + 'At ' + i.toString() + ' Pos' );
+        isValid = false;
+      }
+    }
+
+    return isValid;
+  }
+
+  submitPrefix() {
+
+    if ( !this.parseInvalidInputPrefix() ) {
+      return;
+    }
 
     this.http.post('https://localhost:5001/api/utils/hhi/admin/update-prefix',
     JSON.stringify(this.prefix),).subscribe((res: Response) => { });
