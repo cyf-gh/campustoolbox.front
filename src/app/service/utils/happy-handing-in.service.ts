@@ -7,12 +7,12 @@ export class HappyHandingInService {
   constructor(private http: HttpClient) {
   }
 
-  public async getWorkListAsync(): Promise<HappyHandingInModel.WorkModel[]> {
-    return this.http.get<HappyHandingInModel.WorkModel[]>('https://localhost:5001/api/utils/hhi/get-works').toPromise();
+  public async getWorkListAsync(): Promise<PPHappyHandingInModel.WorkModel[]> {
+    return this.http.get<PPHappyHandingInModel.WorkModel[]>('https://localhost:5001/api/utils/hhi/get-works').toPromise();
   }
 
-  public async getPrefixsAsync(): Promise<HappyHandingInModel.PrefixModel[]> {
+  public async getPrefixsAsync(): Promise<PPHappyHandingInModel.PrefixModel[]> {
     const api = 'https://localhost:5001/api/utils/hhi/admin/get-prefixs';
-    return await this.http.get<HappyHandingInModel.PrefixModel[]>(api).toPromise();
+    return await this.http.get<PPHappyHandingInModel.PrefixModel[]>(api).toPromise();
   }
 }

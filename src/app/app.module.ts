@@ -14,6 +14,7 @@ import { CreateWorkComponent } from './component/utils/happy-handing-in/admin/cr
 import { CreatePrefixComponent } from './component/utils/happy-handing-in/admin/create-prefix/create-prefix.component';
 import { HhiAdminComponent } from './component/utils/happy-handing-in/admin/hhi-admin/hhi-admin.component';
 import { HHIEditComponent } from './component/utils/happy-handing-in/admin/edit/edit.component';
+import { RegisterComponent } from './component/user/register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HHIEditComponent } from './component/utils/happy-handing-in/admin/edit/
     CreatePrefixComponent,
     HhiAdminComponent,
     HHIEditComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

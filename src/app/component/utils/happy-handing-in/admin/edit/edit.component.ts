@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HappyHandingInService } from 'src/app/service/utils/happy-handing-in.service';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
@@ -12,37 +12,62 @@ import { environment } from 'src/environments/environment';
   providers: [HappyHandingInService]
 })
 export class HHIEditComponent implements OnInit {
-  id: number;
+  id: string;
   public genre: string;
 
-  public prefix: HappyHandingInModel.PrefixModel;
-  public work: HappyHandingInModel.WorkModel ;
+  public formModel: FormGroup;
 
-  constructor(private routeInfo: ActivatedRoute, private hhi: HappyHandingInService, private http: HttpClient) {
+  public prefix: Partial<PPHappyHandingInModel.PrefixModel> = {};
+  public work: Partial<PPHappyHandingInModel.WorkModel> = {};
+
+  constructor(private routeInfo: ActivatedRoute, 
+    private hhi: HappyHandingInService, 
+    private http: HttpClient,
+    private fb: FormBuilder ) {
+
     this.id = this.routeInfo.snapshot.queryParams['id'];
     this.genre = this.routeInfo.snapshot.queryParams['genre'];
     console.log(this.genre);
+
+    
+    this.formModel = this.fb.group ( {
+      name:           ['',Validators.maxLength(6)],
+      end:            [''],
+      start:          [''],
+      includeList:    [''],
+      excludeList:    [''],
+      memberNameList: ['']
+    } );
   }
 
   async ngOnInit() {
     switch (this.genre) {
       case 'work':
-        if ( this.id.toString() === '0') {
+        if ( this.id === '0') {
           this.work.id = "0";
           break; 
         }
         await this.hhi.getWorkListAsync().then((works) => {
           this.work = works.find(p => p.id.toString() === this.id.toString());
         });
+
         break;
-        case 'prefix':
-        if ( this.id.toString() === '0') {
+      case 'prefix':
+        if ( this.id === '0') {
           this.prefix.id = "0";
-          break;
+        } else {
+          await this.hhi.getPrefixsAsync().then((prefixs) => {
+            this.prefix = prefixs.find( p => p.id.toString() === this.id.toString() );
+          });
         }
-        await this.hhi.getPrefixsAsync().then((prefixs) => {
-          this.prefix = prefixs.find( p => p.id.toString() === this.id.toString() );
-        });
+        this.formModel = this.fb.group ( {
+          name:           [this.prefix.name,Validators.maxLength(6)],
+          end:            [this.prefix.end],
+          start:          [this.prefix.start],
+          includeList:    [this.prefix.includeList],
+          excludeList:    [this.prefix.excludeList],
+          memberNameList: [this.prefix.memberNameList]
+        } );
         break;
 
       default:
@@ -82,13 +107,13 @@ export class HHIEditComponent implements OnInit {
   }
 
   submitPrefix() {
-
-    if ( !this.parseInvalidInputPrefix() ) {
-      return;
+    if ( !this.formModel.valid ) {
+      return false;
     }
-
-    this.http.post('https://localhost:5001/api/utils/hhi/admin/update-prefix',
-    JSON.stringify(this.prefix),).subscribe((res: Response) => { });
+    console.log( JSON.stringify(this.formModel.value) );
+    return false;
+    // this.http.post('https://localhost:5001/api/utils/hhi/admin/update-prefix',
+    // JSON.stringify(this.prefix),).subscribe((res: Response) => { });
   }
 
 }

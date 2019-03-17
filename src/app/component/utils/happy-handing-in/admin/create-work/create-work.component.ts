@@ -12,7 +12,7 @@ export class CreateWorkComponent implements OnInit {
   public isSubItemImage: boolean;
   public name: string;
   public prefixName: string;
-  public prefixs: HappyHandingInModel.PrefixModel[];
+  public prefixs: PPHappyHandingInModel.PrefixModel[];
 
   constructor() { }
 

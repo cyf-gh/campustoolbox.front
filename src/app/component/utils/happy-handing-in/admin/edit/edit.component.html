@@ -1,41 +1,49 @@
-<div *ngIf="genre=='prefix'">
-  <form>
-    <div class="form-group">
-      <label for="nameHelp">Name</label>
-      <input id="name" class="form-control" [(ngModel)]="prefix.name" [ngModelOptions]="{standalone: true}">
-      <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="container">
+    <!-- Content here -->
+    <div *ngIf="genre=='prefix'">
+      <form (submit)="submitPrefix()" [formGroup]="this.formModel">
+        <div class="form-group">
+          <label for="nameHelp">Name</label>
+          <input id="name" #name class="form-control" formControlName="name" >
+          <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <div [hidden]="formModel.get('name').valid || formModel.get('name').untouched">
+            <div [hidden]="!formModel.hasError('maxlength', 'name')">
+              invalid
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="endHelp">Start</label>
+          <input id="start" #start type="number" class="form-control" aria-describedby="endHelp"  formControlName="start">
+          <small id="endHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="endHelp">End</label>
+          <input id="end" #end class="form-control" aria-describedby="endHelp"  formControlName="end">
+          <small id="endHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        
+        
+        <div class="form-group">
+          <label for="endHelp">Include</label>
+          <input id="includeList" #includeList class="form-control" aria-describedby="endHelp"  formControlName="includeList">
+          <small id="endHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="endHelp">Exclude</label>
+          <input id="excludeList" #excludeList class="form-control" aria-describedby="endHelp"  formControlName="excludeList">
+          <small id="endHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Example textarea</label>
+          <textarea id="memberNameList" #memberNameList class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="memberNameList"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-
-    <div class="form-group">
-        <label for="endHelp">Start</label>
-        <input class="form-control" aria-describedby="endHelp" [(ngModel)]="prefix.start" [ngModelOptions]="{standalone: true}" required pattern="[0-9]*" maxlength="20">
-        <small id="endHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-
-    <div class="form-group">
-        <label for="endHelp">End</label>
-        <input class="form-control" aria-describedby="endHelp" [(ngModel)]="prefix.end" [ngModelOptions]="{standalone: true}" maxlength="20">
-        <small id="endHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-
-
-    <div class="form-group">
-        <label for="endHelp">Include</label>
-        <input class="form-control" aria-describedby="endHelp" [(ngModel)]="prefix.includeList" [ngModelOptions]="{standalone: true}">
-        <small id="endHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-
-    <div class="form-group">
-        <label for="endHelp">Exclude</label>
-        <input class="form-control" aria-describedby="endHelp" [(ngModel)]="prefix.excludeList" [ngModelOptions]="{standalone: true}">
-        <small id="endHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="prefix.memberNameList" [ngModelOptions]="{standalone: true}"></textarea>
-      </div>
-
-    <button type="submit" (click)="submitPrefix()" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+  </div>

@@ -10,8 +10,8 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class HhiAdminComponent implements OnInit {
 
-  public prefixs: HappyHandingInModel.PrefixModel[];
-  public works: HappyHandingInModel.WorkModel[];
+  public prefixs: PPHappyHandingInModel.PrefixModel[];
+  public works: PPHappyHandingInModel.WorkModel[];
   constructor( private hhi: HappyHandingInService ) { }
 
   async ngOnInit() {

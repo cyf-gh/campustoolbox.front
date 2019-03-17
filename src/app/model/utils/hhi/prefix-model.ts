@@ -1,5 +1,5 @@
 // tslint:disable-next-line: no-namespace
-namespace HappyHandingInModel {
+namespace PPHappyHandingInModel {
     export interface PrefixModel {
         id: string;
         name: string;

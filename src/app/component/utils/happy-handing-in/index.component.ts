@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providers: [ HappyHandingInService ]
 })
 export class HappyHandingInComponent implements OnInit {
-  public _works: HappyHandingInModel.WorkModel[];
+  public _works: PPHappyHandingInModel.WorkModel[];
 
   constructor( private hhi: HappyHandingInService ) { }
 
