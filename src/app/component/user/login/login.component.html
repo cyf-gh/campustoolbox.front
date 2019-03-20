@@ -1,0 +1,41 @@
+<div class="container" style="padding-top: 2rem">
+    <div class="row mb-2">
+
+      <div class="col-md-6">
+        <img
+          src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553690398&di=3733130184144b6e8faa4d37304d250f&imgtype=jpg&er=1&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201110%2F06%2F094318pel5uk6vpgv5phaa.jpg"
+          alt="..." class="img-thumbnail">
+      </div>
+      <div class="col-md-6">
+        <div class="card" >
+          
+          <div class="card-body">
+            <h5>登陆你的账户 <span class="badge badge-secondary">New</span></h5>
+            <hr>
+            <form (submit)="submitLogin()" [formGroup]="this.formModel">
+              <div class="form-group">
+                <label for="exampleInputEmail1">电话号码或邮箱</label>
+                <input id="loginName" #loginName formControlName="loginName" type="email" class="form-control" id="exampleInputEmail1"
+                  placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">密码</label>
+                <input id="password" #password formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="">
+              </div>
+              <div class="float-left">
+                <button type="submit" class="btn btn-primary">登陆</button>
+              </div>
+            </form>
+            <div class="float-right">
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="id-keep-login" [(ngModel)]="this.keepLogin" >
+                <label class="form-check-label" for="id-keep-login">保持登陆状态</label>
+              </div>
+
+            </div>
+          </div>
+    
+        </div>
+      </div>
+      </div>
+</div>

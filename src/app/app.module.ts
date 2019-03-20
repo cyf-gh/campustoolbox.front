@@ -15,6 +15,8 @@ import { CreatePrefixComponent } from './component/utils/happy-handing-in/admin/
 import { HhiAdminComponent } from './component/utils/happy-handing-in/admin/hhi-admin/hhi-admin.component';
 import { HHIEditComponent } from './component/utils/happy-handing-in/admin/edit/edit.component';
 import { RegisterComponent } from './component/user/register/register.component';
+import { LoginComponent } from './component/user/login/login.component';
+import { SpaceComponent } from './component/user/space/space.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +30,15 @@ import { RegisterComponent } from './component/user/register/register.component'
     HhiAdminComponent,
     HHIEditComponent,
     RegisterComponent,
+    LoginComponent,
+    SpaceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

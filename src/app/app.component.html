@@ -1,42 +1,70 @@
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        body {
+            background-color: darkslategray;
+        }
+    </style>
 </head>
 
 <body>
+        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" [routerLink]="[ '' ]">CampusToolbox</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="dropdown-divider"></div>
-            <div class="form-row" style="padding-left:1rem">
-                <div class="col-auto">
-                    <input class="form-control" type="search" placeholder="(=￣ω￣=)" aria-label="(=￣ω￣=)">
-                </div>
-                <div class="col-auto">
-                    <button class="btn btn-outline-success" type="submit">搜索</button>
-                </div>
-            </div>
+            <!--
+                            <div class="form-row" style="padding-left:1rem">
+                                <div class="col-auto">
+                                    <input class="form-control" type="search" placeholder="(=￣ω￣=)" aria-label="(=￣ω￣=)">
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-outline-success" type="submit">搜索</button>
+                                </div>
+                            </div>
+                        -->
             <ul class="navbar-nav mr-auto">
+
+                <a class="nav-link" href="#">首页 <span class="sr-only">(current)</span></a>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    小工具</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">小工具</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" [routerLink]="[ '/utils/happy-handing-in' ]">快乐交作业</a>   
+                        <a class="dropdown-item" [routerLink]="[ '/utils/happy-handing-in' ]">快乐交作业</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" [routerLink]="[ '/utils' ]">查看所有小工具</a>   
+                        <a class="dropdown-item" [routerLink]="[ '/utils' ]">查看所有小工具</a>
                     </div>
                 </li>
             </ul>
-            <a class="nav-link">登陆 <span class="sr-only">(current)</span></a>
-            <a class="nav-link">注册 <span class="sr-only">(current)</span></a>
+            <ul class="navbar-nav">
+                <a class="nav-link" href="#col-goods-catalog" role="button" aria-expanded="false"
+                    aria-controls="collapseExample" data-toggle="collapse">商品分类 <span
+                        class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a>
+                <div *ngIf="isLogin">
+                    <a class="nav-link" [routerLink]="[ '/user/space' ]">{{userInfo.absVisiable.nickName}} <span class="sr-only">(current)</span></a>
+                </div>
+                <div *ngIf="!isLogin">
+                    <a class="d-inline-block nav-link" [routerLink]="[ '/user/login' ]">登陆 <span class="sr-only">(current)</span></a>
+                    <a class="d-inline-block nav-link" [routerLink]="[ '/user/register' ]">注册 <span class="sr-only">(current)</span></a>
+                </div>
+            </ul>
         </div>
     </nav>
-    
+    <div class="collapse" id="col-goods-catalog">
+        <div class="card card-body">
+            <a class="nav-link" href="#">面料 <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">书籍 <span class="sr-only">(current)</span></a>
+        </div>
+    </div>
     <router-outlet></router-outlet>
-
     <p class="mt-5 mb-3 text-muted text-center">&copy;cyf 2019</p>
-    
-  </body>
+</div>
+
+</body>

@@ -8,6 +8,10 @@ export class LoginGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean> | Promise<boolean> | boolean {
+        let userInfoStr: string = localStorage.getItem("userinfo");
+        if ( userInfoStr === null ) {
+            return false;
+        }
         return true;
     }
 }
