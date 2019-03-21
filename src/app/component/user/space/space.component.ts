@@ -1,3 +1,4 @@
+import { AccountService } from './../../../service/account/account.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,15 +9,13 @@ import { Router } from '@angular/router';
 })
 export class SpaceComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private account: AccountService) { }
 
   ngOnInit() {
   }
 
   signout() {
-    localStorage.removeItem("userinfo");
-    window.location.reload();
-    this.router.navigateByUrl("/");
+    this.account.Logout();
   }
 
 }

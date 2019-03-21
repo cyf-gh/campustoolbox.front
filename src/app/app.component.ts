@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInfo } from './model/user.model';
+import { AccountService } from './service/account/account.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,14 @@ import { UserInfo } from './model/user.model';
 export class AppComponent implements OnInit {
   public isLogin: boolean;
   public userInfo: UserInfo;
+
+  constructor( private accountService : AccountService ) {
+    this.isLogin = accountService.isLogin();
+    this.userInfo = accountService.TryGetUserInfo();
+  }
+
   ngOnInit(): void {
-    let userInfoStr: string = localStorage.getItem("userinfo");
-    if ( userInfoStr === null ) {
-      this.isLogin = false;
-    } else {
-      this.isLogin = true;
-    }
-    this.userInfo = JSON.parse( userInfoStr );
+
   }
   title = 'CampusToolbox';
 }
