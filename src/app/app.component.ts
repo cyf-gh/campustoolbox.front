@@ -13,7 +13,15 @@ export class AppComponent implements OnInit {
 
   constructor( private accountService : AccountService ) {
     this.isLogin = accountService.isLogin();
-    this.userInfo = accountService.TryGetUserInfo();
+    if ( this.isLogin ) {
+      accountService.TryGetUserInfo().subscribe((res: JSON) => {
+        this.userInfo =  JSON.parse(JSON.stringify(res));
+        if ( this.userInfo == null ) {
+          alert("令牌已过期，请重新登陆");
+          this.accountService.Logout();
+        }
+      }); 
+    }
   }
 
   ngOnInit(): void {

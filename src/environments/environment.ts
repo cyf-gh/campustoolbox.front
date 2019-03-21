@@ -2,10 +2,10 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const baseApi = "http://192.168.8.104:5000/api/";
+const baseApi = "http://172.20.10.3:5000/api/";
 
-const api_login = baseApi + "/api/account/login";
-
+const api_login = baseApi + "account/login";
+const api_reflect_account_by_token = baseApi + "token/reflect-account";
 export const environment = {
   production: false,
   regx_number: /^[0-9]*$/,
@@ -15,7 +15,8 @@ export const environment = {
   regx_email: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
   regx_phone: /^([1][3,4,5,6,7,8,9])\d{9}$/,
 
-  apiLogin: api_login
+  apiLogin: api_login,
+  apiReflectAccountByToken: api_reflect_account_by_token
 };
 
 /*

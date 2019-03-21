@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { TokenService } from './../token/token.service';
 import { Injectable } from '@angular/core';
 import { UserInfo } from 'src/app/model/user.model';
 import { FormGroup } from '_@angular_forms@7.2.9@@angular/forms';
@@ -9,8 +11,6 @@ import { Router } from '_@angular_router@7.2.9@@angular/router';
   providedIn: 'root'
 })
 export class AccountService {
-
-  userInfoKeyName: string = "userinfo";
 
   public Login( formModel: FormGroup, keepLogin: boolean ) {
     if ( !formModel.valid ) {
@@ -33,9 +33,9 @@ export class AccountService {
     JSON.stringify(formModel.value),).subscribe((res: JSON) => { 
       if ( res.toString() !== "" ) {
         if ( keepLogin ) {
-          localStorage.setItem( this.userInfoKeyName, JSON.stringify( res ) );
+          this.tokenService.SaveLocal( res );
         } else {
-          sessionStorage.setItem( this.userInfoKeyName, JSON.stringify( res ) );
+          this.tokenService.SaveSession( res );
         }
         alert("登陆成功");
         window.location.reload();
@@ -48,41 +48,18 @@ export class AccountService {
   }
 
   public Logout() {
-    localStorage.removeItem( this.userInfoKeyName );
-    sessionStorage.removeItem( this.userInfoKeyName );
+    this.tokenService.DeleteToken();
     window.location.reload();
     this.router.navigateByUrl("/");    
   }
 
   public isLogin() : boolean {
-    return !! this.getUserInfoTemp() || !! this.getUserInfoPerm();
+    return !! this.tokenService.TryGetLocalToken();
   }
 
-  public TryGetUserInfo() : UserInfo {
-    if ( this.isLogin() ) {
-      let userInfo : UserInfo = this.GetUserInfoTemp();
-      if( userInfo === null ) {
-        userInfo = this.GetUserInfoPerm();
-      }
-      return userInfo;
-    }
+  public TryGetUserInfo() : Observable<Object> {
+    return this.http.post(environment.apiReflectAccountByToken, JSON.stringify(this.tokenService.TryGetLocalToken()),);
   }
 
-  public GetUserInfoPerm() : UserInfo {
-    return JSON.parse( this.getUserInfoPerm() );
-  }
-
-  public GetUserInfoTemp() : UserInfo {
-    return JSON.parse( this.getUserInfoTemp() );
-  }
-
-
-  private getUserInfoPerm() : string {
-    return localStorage.getItem(this.userInfoKeyName);
-  }
-
-  private getUserInfoTemp() : string {
-    return sessionStorage.getItem(this.userInfoKeyName);
-  }
-  constructor( private http: HttpClient, private router: Router ) { }
+  constructor( private http: HttpClient, private router: Router, private tokenService: TokenService ) { }
 }
