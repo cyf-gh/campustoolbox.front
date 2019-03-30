@@ -2,10 +2,10 @@ import { Observable } from 'rxjs';
 import { TokenService } from './../token/token.service';
 import { Injectable } from '@angular/core';
 import { UserInfo } from 'src/app/model/user.model';
-import { FormGroup } from '_@angular_forms@7.2.9@@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '_@angular_router@7.2.9@@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'

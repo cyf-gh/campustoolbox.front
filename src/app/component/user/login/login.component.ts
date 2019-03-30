@@ -1,9 +1,9 @@
+import { Router } from '@angular/router';
 import { AccountService } from './../../../service/account/account.service';
 import { environment } from './../../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '_@angular_forms@7.2.9@@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '_@angular_router@7.2.9@@angular/router';
 
 @Component({
   selector: 'app-login',

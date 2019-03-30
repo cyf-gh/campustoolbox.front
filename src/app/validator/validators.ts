@@ -1,4 +1,4 @@
-import { FormGroup, FormControl } from "_@angular_forms@7.2.9@@angular/forms";
+import { FormGroup, FormControl } from '@angular/forms';
 
 export class PPValidators {
     static passwordEqualValidator( group: FormGroup ) : any {
