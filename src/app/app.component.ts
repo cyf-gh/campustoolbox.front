@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
           alert("令牌已过期，请重新登陆");
           this.accountService.Logout();
         }
-      }); 
+      });
     }
   }
 
