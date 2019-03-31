@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +18,7 @@ import { HHIEditComponent } from './component/utils/happy-handing-in/admin/edit/
 import { RegisterComponent } from './component/user/register/register.component';
 import { LoginComponent } from './component/user/login/login.component';
 import { SpaceComponent } from './component/user/space/space.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,7 @@ import { SpaceComponent } from './component/user/space/space.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [ CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

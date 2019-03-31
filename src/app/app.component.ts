@@ -11,15 +11,15 @@ export class AppComponent implements OnInit {
   public isLogin: boolean;
   public userInfo: UserInfo;
 
-  constructor( private accountService : AccountService ) {
+  constructor( private accountService: AccountService ) {
     this.isLogin = accountService.isLogin();
     if ( this.isLogin ) {
-      accountService.TryGetUserInfo().subscribe((res: JSON) => {
-        this.userInfo =  JSON.parse(JSON.stringify(res));
-        if ( this.userInfo == null ) {
-          alert("令牌已过期，请重新登陆");
-          this.accountService.Logout();
-        }
+      accountService.TryGetUserInfo().subscribe((res) => {
+          this.userInfo =  JSON.parse(JSON.stringify(res));
+          if ( JSON.stringify(res).includes("-99998") ) {
+            alert("令牌已过期，请重新登陆");
+            this.accountService.Logout();
+          }
       });
     }
   }

@@ -1,4 +1,6 @@
-import { Token } from './../../model/token.model';
+import { environment } from 'src/environments/environment';
+import { CookieService } from 'ngx-cookie-service';
+import { Token, TokenImplement } from './../../model/token.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,27 +10,29 @@ import { Injectable } from '@angular/core';
 export class TokenService {
   public tokenKeyName: string = "token";
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
-  public TryGetLocalToken() : Token {
-      let token : Token = JSON.parse( sessionStorage.getItem(this.tokenKeyName) );
-      if( token === null ) {
-        token = JSON.parse( localStorage.getItem(this.tokenKeyName) );
-      }
-      return token;
+  public TryGetLocalToken(): Token {
+    let token: Token = new TokenImplement();
+    token.token = this.cookieService.get(this.tokenKeyName);
+    return token;
   }
 
-  public SaveLocal( token: JSON ) {
-    localStorage.setItem( this.tokenKeyName, JSON.stringify( token ) );
+  public IsTokenExsit(): boolean {
+    return this.cookieService.check(this.tokenKeyName);
+  }
+  public SaveLocal(token) {
+    let _token: Token = JSON.parse( JSON.stringify( token) );
+    this.cookieService.set(this.tokenKeyName, _token.token, 365, '/');
   }
 
-  public SaveSession( token: JSON ) {
-    sessionStorage.setItem( this.tokenKeyName, JSON.stringify( token ) );
+  public SaveSession(token) {
+    let _token: Token = JSON.parse( JSON.stringify( token) );
+    this.cookieService.set( this.tokenKeyName, _token.token, 0, '/' );
   }
 
   public DeleteToken() {
-    localStorage.removeItem( this.tokenKeyName );
-    sessionStorage.removeItem( this.tokenKeyName );
+    this.cookieService.delete(this.tokenKeyName);
   }
-  
+
 }

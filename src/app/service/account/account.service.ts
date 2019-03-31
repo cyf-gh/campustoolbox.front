@@ -1,10 +1,11 @@
+import { Token } from './../../model/token.model';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { TokenService } from './../token/token.service';
 import { Injectable } from '@angular/core';
 import { UserInfo } from 'src/app/model/user.model';
-import { FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -33,9 +34,9 @@ export class AccountService {
     formModel.patchValue({ login: loginBy });
 
     this.http.post(environment.apiLogin,
-      JSON.stringify(formModel.value), this.httpOptions ).subscribe((res: JSON) => {
-        if (res.toString() !== "") {
-          if (keepLogin) {
+      JSON.stringify(formModel.value), this.httpOptions ).subscribe((res ) => {
+        if ( !JSON.stringify(res).includes("-99995") ) {
+          if ( keepLogin ) {
             this.tokenService.SaveLocal(res);
           } else {
             this.tokenService.SaveSession(res);
@@ -57,11 +58,11 @@ export class AccountService {
   }
 
   public isLogin(): boolean {
-    return !!this.tokenService.TryGetLocalToken();
+    return this.tokenService.IsTokenExsit();
   }
 
   public TryGetUserInfo(): Observable<Object> {
-    return this.http.post(environment.apiReflectAccountByToken, JSON.stringify(this.tokenService.TryGetLocalToken()));
+    return this.http.get( environment.apiReflectAccountByToken, this.httpOptions );
   }
 
   constructor(private http: HttpClient, private router: Router, private tokenService: TokenService) { }
