@@ -18,6 +18,7 @@ import { HHIEditComponent } from './component/utils/happy-handing-in/admin/edit/
 import { RegisterComponent } from './component/user/register/register.component';
 import { LoginComponent } from './component/user/login/login.component';
 import { SpaceComponent } from './component/user/space/space.component';
+import { IndexComponent } from './component/index/index.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { SpaceComponent } from './component/user/space/space.component';
     HHIEditComponent,
     RegisterComponent,
     LoginComponent,
-    SpaceComponent
+    SpaceComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
