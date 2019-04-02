@@ -1,0 +1,83 @@
+
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+    <label class="form-check-label" for="inlineRadio1">1</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+    <label class="form-check-label" for="inlineRadio2">2</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+    <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
+  </div>
+
+  <style>
+      @media screen and (max-width: 600px) { /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
+        .card-columns{
+          column-count: 2;
+        }
+      }
+      @media screen and (min-width: 600px) {
+        .card-columns{
+          column-count: 4;
+        }
+      }
+  </style>
+  <div class="container" style="padding-top: 2rem">
+      <div class="card-columns">
+        <div *ngFor="let de of demands; ">
+    
+          <div class="card text-left">
+              <div class="card-body">
+    
+                <h5 class="card-title">{{ de.base.name }}</h5>
+                <h5 class="d-inline card-text" style="float:left;color:green;">￥{{ de.accecptablePriceMin }} ~ ￥{{ de.accecptablePriceMax }}</h5>
+                <!--
+                  <ng-container *ngIf="de.base.isAvailable; else elseTemplate">
+                    <a href="#" class="btn btn-primary">购买</a>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    <a href="#" class="btn disabled">卖掉了</a>
+                  </ng-template>
+                -->
+                <br>
+              </div>
+              <div class="card-footer">
+                <!-- 发布者头像 -->
+                  <small class="text-muted"><a href="#">{{ de.publisherName }}</a> 发布于 {{ de.base.publishDate | date:'yyyy-MM-dd HH:mm' }}</small>
+              </div>
+            </div>
+          </div>
+            
+        </div>
+    </div>
+    <div class="container" style="padding-top: 2rem">
+        <div class="card-columns">
+          <div *ngFor="let su of supplies; ">
+      
+            <div class="card text-left">
+                <img [src]="su.images[0]" class="card-img-top" alt="...">
+                <div class="card-body">
+      
+                  <h5 class="card-title">{{ su.base.name }}</h5>
+                  <h5 class="d-inline card-text" style="float:left;color:red;">￥{{ su.price }}</h5>
+                  <p class="d-inline card-text" style="padding-left: 10pt; color:grey;text-decoration:line-through;">￥{{ su.originalPrice }}</p>
+                  <!--
+                    <ng-container *ngIf="su.base.isAvailable; else elseTemplate">
+                      <a href="#" class="btn btn-primary">购买</a>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                      <a href="#" class="btn disabled">卖掉了</a>
+                    </ng-template>
+                  -->
+                </div>
+                <div class="card-footer">
+                  <!-- 发布者头像 -->
+                    <small class="text-muted"><a href="#">{{ su.publisherName }}</a> 发布于 {{ su.base.publishDate | date:'yyyy-MM-dd HH:mm' }}</small>
+                </div>
+              </div>
+            </div>
+              
+          </div>
+      </div>

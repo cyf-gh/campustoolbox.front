@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndexComponent } from './index.component';
+import { GoodDemandIndexComponent } from './good-demand-index.component';
 
-describe('IndexComponent', () => {
-  let component: IndexComponent;
-  let fixture: ComponentFixture<IndexComponent>;
+describe('GoodDemandIndexComponent', () => {
+  let component: GoodDemandIndexComponent;
+  let fixture: ComponentFixture<GoodDemandIndexComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IndexComponent ]
+      declarations: [ GoodDemandIndexComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IndexComponent);
+    fixture = TestBed.createComponent(GoodDemandIndexComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

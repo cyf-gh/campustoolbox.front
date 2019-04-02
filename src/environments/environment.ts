@@ -8,6 +8,10 @@ const ppdomain = ".campustoolbox.cn";
 
 const api_login = baseApi + "account/login";
 const api_reflect_account_by_token = baseApi + "token/reflect-account";
+
+const api_get_supplies = baseApi + "trade/supplies";
+const api_get_demands = baseApi + "trade/demands";
+
 export const environment = {
   production: false,
   regx_number: /^[0-9]*$/,
@@ -19,7 +23,12 @@ export const environment = {
 
   domain: ppdomain,
   apiLogin: api_login,
-  apiReflectAccountByToken: api_reflect_account_by_token
+  apiReflectAccountByToken: api_reflect_account_by_token,
+  apiGetSupplies: api_get_supplies,
+  apiGetDemands: api_get_demands,
+  httpOptions:  {
+    withCredentials: true
+  }
 };
 
 /*

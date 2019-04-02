@@ -1,4 +1,7 @@
+import { Router } from '@angular/router';
+import { GoodService } from './../../service/good.service';
 import { Component, OnInit } from '@angular/core';
+import { ppSupply } from 'src/app/model/good.model';
 
 @Component({
   selector: 'app-index',
@@ -6,15 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.sass']
 })
 export class IndexComponent implements OnInit {
-
-  names: Array<string>;
-
-  constructor() { 
-    
-    this.names = ["Aarav", "Martín", "Shannon", "Ariana", "Kai"];
-  }
-
   ngOnInit() {
   }
-
 }

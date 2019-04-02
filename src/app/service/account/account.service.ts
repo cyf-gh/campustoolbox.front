@@ -12,10 +12,6 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AccountService {
-  private httpOptions = {
-    withCredentials: true
-  };
-  
   public Login(formModel: FormGroup, keepLogin: boolean) {
     if (!formModel.valid) {
       return false;
@@ -34,7 +30,7 @@ export class AccountService {
     formModel.patchValue({ login: loginBy });
 
     this.http.post(environment.apiLogin,
-      JSON.stringify(formModel.value), this.httpOptions ).subscribe((res ) => {
+      JSON.stringify(formModel.value), environment.httpOptions ).subscribe((res ) => {
         if ( !JSON.stringify(res).includes("-99995") ) {
           if ( keepLogin ) {
             this.tokenService.SaveLocal(res);
@@ -62,7 +58,7 @@ export class AccountService {
   }
 
   public TryGetUserInfo(): Observable<Object> {
-    return this.http.get( environment.apiReflectAccountByToken, this.httpOptions );
+    return this.http.get( environment.apiReflectAccountByToken, environment.httpOptions );
   }
 
   constructor(private http: HttpClient, private router: Router, private tokenService: TokenService) { }

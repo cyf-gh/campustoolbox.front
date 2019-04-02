@@ -20,8 +20,10 @@ import { LoginComponent } from './component/user/login/login.component';
 import { RegisterComponent } from './component/user/register/register.component';
 import { SpaceComponent } from './component/user/space/space.component';
 import { IndexComponent } from './component/index/index.component';
+import { GoodViewAllComponent } from './component/good-view-all/good-view-all.component';
 
 const routes: Routes = [
+  { path: 'home', component: GoodViewAllComponent },
   { path: 'utils', component:  UtilsComponent, children:[] },
   { path: 'utils/happy-handing-in', component: HappyHandingInComponent, children: [
     { path: 'admin', component:  HhiAdminComponent, children:[] }

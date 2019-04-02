@@ -19,6 +19,9 @@ import { RegisterComponent } from './component/user/register/register.component'
 import { LoginComponent } from './component/user/login/login.component';
 import { SpaceComponent } from './component/user/space/space.component';
 import { IndexComponent } from './component/index/index.component';
+import { GoodDemandIndexComponent } from './component/good-demand-index/good-demand-index.component';
+import { GoodSupplyIndexComponent } from './component/good-supply-index/good-supply-index.component';
+import { GoodViewAllComponent } from './component/good-view-all/good-view-all.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { IndexComponent } from './component/index/index.component';
     RegisterComponent,
     LoginComponent,
     SpaceComponent,
-    IndexComponent
+    IndexComponent,
+    GoodDemandIndexComponent,
+    GoodSupplyIndexComponent,
+    GoodViewAllComponent
   ],
   imports: [
     BrowserModule,
