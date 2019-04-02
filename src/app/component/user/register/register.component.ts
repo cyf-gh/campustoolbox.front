@@ -1,6 +1,8 @@
+import { AccountService } from './../../../service/account/account.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { PPValidators } from 'src/app/validator/validators';
+import { ppProvince, ppArea, ppCollege } from 'src/app/model/static-data/province.model';
 
 @Component({
   selector: 'app-register',
@@ -9,16 +11,44 @@ import { PPValidators } from 'src/app/validator/validators';
 })
 export class RegisterComponent implements OnInit {
   formModel: FormGroup;
+  allProvinces: ppProvince[];
+  private allAreas: ppArea[];
+  provinceAreas: ppArea[];
 
-  constructor( private fb: FormBuilder ) { 
+  allColleges: ppCollege[];
+
+  constructor( private fb: FormBuilder, private accountServices: AccountService ) { 
     this.formModel = fb.group({
+      nickName: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
+      phone: ['', Validators.required],
+      prov: ['', Validators.required],
+      area: ['', Validators.required],
       passwordGroup: fb.group({
-
+        pswd: ['', Validators.required],
+        pswdc: ['', Validators.required]
       }, {validator: PPValidators.passwordEqualValidator})
+    });
+    accountServices.GetProvinces().subscribe( ( res ) => {
+      this.allProvinces = JSON.parse( JSON.stringify( res ) );
+    });
+    accountServices.GetAreas().subscribe( ( res ) => {
+      this.allAreas = JSON.parse( JSON.stringify( res ) );
+    });
+    accountServices.GetColleges().subscribe( ( res ) => {
+      this.allColleges = JSON.parse( JSON.stringify( res ) );
     });
   }
 
   ngOnInit() {
   }
 
+  provinceSelected(event) {
+    const pcode = event.target.value;
+    this.provinceAreas = this.allAreas.filter( a => a.provinceCode === pcode );
+  }
+
+  submitRegister() {
+
+  }
 }

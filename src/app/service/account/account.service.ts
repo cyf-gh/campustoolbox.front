@@ -49,8 +49,8 @@ export class AccountService {
 
   public Logout() {
     this.tokenService.DeleteToken();
-    window.location.reload();
     this.router.navigateByUrl("/");
+    window.location.reload();
   }
 
   public isLogin(): boolean {
@@ -59,6 +59,18 @@ export class AccountService {
 
   public TryGetUserInfo(): Observable<Object> {
     return this.http.get( environment.apiReflectAccountByToken, environment.httpOptions );
+  }
+
+  public GetProvinces(): Observable<Object> {
+    return this.http.get( environment.apiGetStaticDataProvinces, environment.httpOptions );
+  }
+
+  public GetAreas(): Observable<Object> {
+    return this.http.get( environment.apiGetStaticDataAreas, environment.httpOptions );
+  }
+
+  public GetColleges(): Observable<object> {
+    return this.http.get( environment.apiGetStaticColleges, environment.httpOptions );
   }
 
   constructor(private http: HttpClient, private router: Router, private tokenService: TokenService) { }

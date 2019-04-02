@@ -11,6 +11,9 @@ const api_reflect_account_by_token = baseApi + "token/reflect-account";
 
 const api_get_supplies = baseApi + "trade/supplies";
 const api_get_demands = baseApi + "trade/demands";
+const api_get_static_data_provinces = baseApi + "static-data/cn-provinces";
+const api_get_static_data_areas = baseApi + "static-data/cn-areas";
+const api_get_static_data_colleges = baseApi + "static-data/cn-colleges";
 
 export const environment = {
   production: false,
@@ -26,6 +29,10 @@ export const environment = {
   apiReflectAccountByToken: api_reflect_account_by_token,
   apiGetSupplies: api_get_supplies,
   apiGetDemands: api_get_demands,
+  apiGetStaticDataProvinces: api_get_static_data_provinces,
+  apiGetStaticDataAreas: api_get_static_data_areas,
+  apiGetStaticColleges: api_get_static_data_colleges,
+  
   httpOptions:  {
     withCredentials: true
   }
