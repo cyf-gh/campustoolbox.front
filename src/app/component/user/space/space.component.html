@@ -9,7 +9,7 @@
 <div class="container" style="padding-top: 2rem">
 
   <div class="mx-auto" style="width: 200px; padding-top: 2rem">
-    <div *ngIf="this.formModel.nickName!=undefined">
+    <div *ngIf="this.formModel.nickName===undefined">
       <form (submit)="submitModifyPrivateInfo()" [formGroup]="this.formModel">
         <div class="form-group">
           <label for="nickName">昵称</label>

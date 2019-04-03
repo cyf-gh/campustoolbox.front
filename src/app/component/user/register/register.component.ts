@@ -2,7 +2,7 @@ import { AccountService } from './../../../service/account/account.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { PPValidators } from 'src/app/validator/validators';
-import { ppProvince, ppArea, ppCollege } from 'src/app/model/static-data/province.model';
+import { ppProvince, ppArea, ppCollege, ppGrade } from 'src/app/model/static-data/province.model';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   allProvinces: ppProvince[];
   private allAreas: ppArea[];
   provinceAreas: ppArea[];
+  allGrades: ppGrade[];
 
   allColleges: ppCollege[];
 
@@ -22,10 +23,12 @@ export class RegisterComponent implements OnInit {
       nickName: ['', Validators.required],
       email: ['', Validators.required, Validators.email],
       phone: ['', Validators.required],
-      prov: ['', Validators.required],
-      area: ['', Validators.required],
+      college: ['', Validators.required],
+      city: ['', Validators.required],
+      grade: ['', Validators.required],
+      district: ['', Validators.required],
       passwordGroup: fb.group({
-        pswd: ['', Validators.required],
+        plainPassword: ['', Validators.required],
         pswdc: ['', Validators.required]
       }, {validator: PPValidators.passwordEqualValidator})
     });
@@ -37,6 +40,10 @@ export class RegisterComponent implements OnInit {
     });
     accountServices.GetColleges().subscribe( ( res ) => {
       this.allColleges = JSON.parse( JSON.stringify( res ) );
+      this.allColleges.sort((a, b) => a.name.localeCompare(b.name, 'zh-Hans-CN', {sensitivity: 'accent'}));
+    });
+    accountServices.GetGrades().subscribe( ( res ) => {
+      this.allGrades = JSON.parse( JSON.stringify( res ) );
     });
   }
 
@@ -44,11 +51,11 @@ export class RegisterComponent implements OnInit {
   }
 
   provinceSelected(event) {
-    const pcode = event.target.value;
+    const pcode = this.allProvinces.find( a => a.name === event.target.value ).code;
     this.provinceAreas = this.allAreas.filter( a => a.provinceCode === pcode );
   }
 
   submitRegister() {
-
+    console.log(this.formModel.value);
   }
 }

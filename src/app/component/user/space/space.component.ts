@@ -17,7 +17,7 @@ export class SpaceComponent implements OnInit {
     accountService.TryGetUserInfo().subscribe((res) => {
       this.userInfo =  JSON.parse(JSON.stringify(res));
       this.formModel = this.fb.group ( {
-        nickName:      ['', Validators.required]
+        nickName:      [this.userInfo.absVisiable.nickName, Validators.required]
       } );
     });
   }

@@ -14,7 +14,7 @@ const api_get_demands = baseApi + "trade/demands";
 const api_get_static_data_provinces = baseApi + "static-data/cn-provinces";
 const api_get_static_data_areas = baseApi + "static-data/cn-areas";
 const api_get_static_data_colleges = baseApi + "static-data/cn-colleges";
-
+const api_get_static_data_grades = baseApi + "static-data/grades";
 export const environment = {
   production: false,
   regx_number: /^[0-9]*$/,
@@ -32,7 +32,8 @@ export const environment = {
   apiGetStaticDataProvinces: api_get_static_data_provinces,
   apiGetStaticDataAreas: api_get_static_data_areas,
   apiGetStaticColleges: api_get_static_data_colleges,
-  
+  apiGetStaticGrades: api_get_static_data_grades,
+
   httpOptions:  {
     withCredentials: true
   }

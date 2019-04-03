@@ -73,5 +73,9 @@ export class AccountService {
     return this.http.get( environment.apiGetStaticColleges, environment.httpOptions );
   }
 
+  public GetGrades(): Observable<object> {
+    return this.http.get( environment.apiGetStaticGrades, environment.httpOptions );
+  }
+
   constructor(private http: HttpClient, private router: Router, private tokenService: TokenService) { }
 }

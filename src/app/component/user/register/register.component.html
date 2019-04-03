@@ -1,42 +1,82 @@
 <div class="container" style="padding-top: 2rem">
-  <div class="col-md-6">
-    <div class="alert alert-warning" role="alert">
+  <div class="row mb-2">
+
+    <div class="col-md-6">
+      <div class="alert alert-warning" role="alert">
         *信息注册后将无法更改！请正确填写！
       </div>
-    <div class="card">
-
-      <div class="card-body">
-        <h5>账户注册 <span class="badge badge-secondary">New</span></h5>
-        <hr>
+      <div class="card">
+        <div class="card-body">
+          <h5>账户注册 <span class="badge badge-secondary">New</span></h5>
+          <hr>
           <form (submit)="submitRegister()" [formGroup]="this.formModel">
             <div class="form-group">
               <label for="nickName">昵称*</label>
               <input id="nickName" #nickName formControlName="nickName" type="text" class="form-control" placeholder="">
             </div>
             <div class="form-group">
-              <label for="email">邮箱*</label>
+              <label for="email">邮箱* </label>
               <input id="email" #email formControlName="email" type="email" class="form-control" placeholder="">
+              <small id="passwordHelpBlock" class="form-text text-muted">
+                *将会用作账户验证，请务必正确填写*
+              </small>
             </div>
             <div class="form-group">
-                <label for="phone">手机号码*</label>
-                <input id="phone" #phone formControlName="phone" type="text" class="form-control" placeholder="">
+              <label for="phone">手机号码*</label>
+              <input id="phone" #phone formControlName="phone" type="text" class="form-control" placeholder="">
             </div>
-            <select class="custom-select" id="prov" #prov name="prov" (change)="provinceSelected($event)">
-              <option value="-1">请选择省市</option>
-              <option *ngFor="let pr of allProvinces; let i=index" [value]="pr.code">{{pr.name}}</option>
-            </select>
-            <select class="custom-select" id="area" #area>
-              <option value="-1">请选择区县</option>
-              <option *ngFor="let ar of provinceAreas; let i=index" [value]="ar.provinceCode">{{ar.name}}</option>
-            </select>
-            <select class="custom-select" id="college" #college>
-                <option value="-1">请选择学校</option>
+
+            <div formGroupName="passwordGroup">
+              <div class="form-group">
+                <label for="phone">密码</label>
+                <input id="plainPassword" #plainPassword formControlName="plainPassword" type="password" class="form-control" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="phone">确认密码</label>
+                <input id="pswdc" #pswdc formControlName="pswdc" type="password" class="form-control" placeholder="">
+              </div>
+            </div>
+
+            <label for="district">生源地</label>
+            <div class="form-row">
+              <select class="custom-select  col-md-6" formControlName="city" (change)="provinceSelected($event)">
+                <option *ngFor="let pr of allProvinces; let i=index" [value]="pr.name">{{pr.name}}</option>
+              </select>
+              <select class="custom-select col-md-6" formControlName="district">
+                <option *ngFor="let ar of provinceAreas; let i=index" [value]="ar.name">{{ar.name}}</option>
+              </select>
+            </div>
+            <p></p>
+            <label for="college">学校</label>
+            <div class="form-row">
+              <select class="custom-select col-md-8" formControlName="college">
                 <option *ngFor="let co of allColleges; let i=index" [value]="co.name">{{co.name}}</option>
-            </select>
-            <div class="float-right">
-              <button type="submit" class="btn btn-primary">注册</button>
+              </select>
+              <select class="custom-select col-md-4" formControlName="grade">
+                <option *ngFor="let g of allGrades; let i=index" [value]="g.code">{{g.name}}</option>
+              </select>
+            </div>
+            <p></p>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="read">
+              <label class="form-check-label" for="read">我已阅读用户协议</label>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">注册</button>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet
+            fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex
+            communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem
+            certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
+        </div>
       </div>
     </div>
   </div>

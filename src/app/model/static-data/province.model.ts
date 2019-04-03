@@ -17,3 +17,8 @@ export interface ppCollege {
     zone: string;
     order: number;
 }
+
+export interface ppGrade {
+    code: number;
+    name: string;
+}
