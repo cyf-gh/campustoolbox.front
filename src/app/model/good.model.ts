@@ -13,6 +13,7 @@ export interface ppSupply {
     originalPrice: number;
     price: number;
     publisherName: string;
+    publisherHp: string;
 }
 
 export interface ppDemand {
@@ -20,4 +21,5 @@ export interface ppDemand {
     accecptablePriceMin: number;
     accecptablePriceMax: number;
     publisherName: string;
+    publisherHp: string;
 }

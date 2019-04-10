@@ -11,6 +11,7 @@
 
     export interface AbsVisiable {
         id: number;
+        hp: string;
         nickName: string;
         college: string;
     }
