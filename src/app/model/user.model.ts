@@ -21,3 +21,7 @@
         absVisiable: AbsVisiable;
     }
 
+    export interface UploadInfo {
+        name: string;
+        hp: string;
+    }

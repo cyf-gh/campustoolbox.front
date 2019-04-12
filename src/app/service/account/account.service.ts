@@ -1,3 +1,4 @@
+import { UploadInfo } from './../../model/user.model';
 import { Token } from './../../model/token.model';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -47,10 +48,28 @@ export class AccountService {
     return false;
   }
 
+  public UploadProfileInfo( updatedInfo: UploadInfo ) {
+    this.http.post(environment.apiAccountInfoUpdate,
+      JSON.stringify(updatedInfo), environment.httpOptions ).subscribe(( res ) => {
+        alert("修改成功");
+        // if ( !JSON.stringify(res).includes("-99995") ) {
+        //   alert("修改成功");
+        //   window.location.reload();
+        //   this.router.navigateByUrl("/")
+        // } else {
+        //   alert("修改失败");
+        // }
+        window.location.reload();
+      } );
+  }
+
   public Logout() {
-    this.tokenService.DeleteToken();
     this.router.navigateByUrl("/");
-    window.location.reload();
+    this.tokenService.DeleteToken();
+    setTimeout( function() {
+      window.location.reload();
+      alert('注销登录成功！');
+    }, 1000);
   }
 
   public isLogin(): boolean {

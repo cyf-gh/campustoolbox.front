@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserInfo, AbsVisiable } from './model/user.model';
 import { AccountService } from './service/account/account.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CookiePolicyConfirmService } from './service/cookie-policy-confirm/cookie-policy-confirm.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
-  constructor( private accountService: AccountService, private sanitizer: DomSanitizer ) {
+  constructor( private accountService: AccountService, private sanitizer: DomSanitizer, private cpService: CookiePolicyConfirmService ) {
     this.isLogin = accountService.isLogin();
     if ( this.isLogin ) {
       accountService.TryGetUserInfo().subscribe((res) => {
@@ -29,6 +30,10 @@ export class AppComponent implements OnInit {
     }
   }
 
+  confirmCookiePolicy() {
+    this.cpService.setConfirmedUsingCookie();
+  }
+  
   ngOnInit(): void {
 
   }

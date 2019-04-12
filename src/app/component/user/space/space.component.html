@@ -1,26 +1,57 @@
-<div class="alert alert-success" role="alert">
-  <h4 class="alert-heading">Well done!</h4>
-  <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so
-    that you can see how spacing within an alert works with this kind of content.</p>
-  <hr>
-  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-</div>
-
 <div class="container" style="padding-top: 2rem">
-
-  <div class="mx-auto" style="width: 200px; padding-top: 2rem">
-    <div *ngIf="this.formModel.nickName===undefined">
-      <form (submit)="submitModifyPrivateInfo()" [formGroup]="this.formModel">
-        <div class="form-group">
-          <label for="nickName">昵称</label>
-          <input id="nickName" #nickName formControlName="nickName" type="text" class="form-control" placeholder="">
+  <div class="card">
+    <div class="card-body">
+      <div class="mx-auto" style="width: 300px; padding-top: 2rem">
+        <h5 class="card-title">账户信息</h5>
+        <ng-container *ngIf="this.userInfo.relieable.isConfirmed; else elseTemplate_isC">
+            <span class="badge badge-success">验证状态：已经过邮箱认证</span>
+        </ng-container>
+        <ng-template #elseTemplate_isC>
+            <span class="badge badge-danger">验证状态：未经过邮箱认证</span>
+        </ng-template>
+        <div *ngIf="this.formModel.nickName===undefined">
+          <form (submit)="submitModifyPrivateInfo()" [formGroup]="this.formModel">
+            <div class="form-group">
+              <label for="nickName">昵称</label>
+              <input id="nickName" #nickName formControlName="nickName" type="text" class="form-control" placeholder="">
+            </div>
+            <img id="id_profile_picture_previewer" [src]="sanitize(userInfo.absVisiable.hp)" alt="头像"
+              class="img-thumbnail">
+            <!--头像上传-->
+            <div class="custom-file">
+              <input type="file" accept="image/*" id="profile_picture_picker" (change)="uploadProfilePicture()"
+                class="custom-file-input" aria-describedby="inputGroupFileAddon04">
+              <label id="img-count" class="custom-file-label" for="inputGroupFile04">更换头像</label>
+            </div>
+            <hr>      
+            <p>
+              学校：{{userInfo.absVisiable.college }}
+            </p>
+            <p>
+              真实姓名：{{this.userInfo.relieable.name}}
+            </p>
+            <p>
+              城市：{{userInfo.relieable.city }}
+            </p>
+            <p>
+              区域：{{this.userInfo.relieable.district}}
+            </p>
+            <p>
+              电子邮件：{{userInfo.relieable.email }}
+            </p>
+            <p>
+              电话：{{this.userInfo.relieable.phone}}
+            </p>
+            <br>
+            <button type="submit" class="btn-lg btn-primary btn-block">修改信息</button>
+          </form>
         </div>
-        <div class="float-right">
-          <button type="submit" class="btn btn-primary">修改信息</button>
-        </div>
-      </form>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <button type="button" class="btn-lg btn-danger btn-block" (click)="signout()">注销登陆</button>
     </div>
   </div>
 </div>
-
-<button type="button" class="btn btn-info" (click)="signout()">注销</button>

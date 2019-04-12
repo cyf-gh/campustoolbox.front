@@ -1,3 +1,5 @@
+import { GoodViewDetailComponent } from './component/good-view-detail/good-view-detail.component';
+import { CookiePolicyDetailsComponent } from './component/cookie-policy-details/cookie-policy-details.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -24,6 +26,7 @@ import { GoodViewAllComponent } from './component/good-view-all/good-view-all.co
 
 const routes: Routes = [
   { path: 'home', component: GoodViewAllComponent },
+  { path: 'good/detail', component: GoodViewDetailComponent },
   { path: 'utils', component:  UtilsComponent, children:[] },
   { path: 'utils/happy-handing-in', component: HappyHandingInComponent, children: [
     { path: 'admin', component:  HhiAdminComponent, children:[] }
@@ -34,7 +37,8 @@ const routes: Routes = [
   { path: 'utils/happy-handing-in/admin/edit', component: HHIEditComponent, canActivate: [HappyHandingInAdminGuard] },
   { path: 'user/login', component: LoginComponent },
   { path: 'user/register', component: RegisterComponent },
-  { path: 'user/space', component: SpaceComponent },
+  { path: 'user/space', component: SpaceComponent, canActivate: [LoginGuard] },
+  { path: 'policy/cookie', component: CookiePolicyDetailsComponent },
   { path: '**', component: IndexComponent, children:[] }
 ];
 

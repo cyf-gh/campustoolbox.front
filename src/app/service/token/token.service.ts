@@ -32,7 +32,8 @@ export class TokenService {
   }
 
   public DeleteToken() {
-    this.cookieService.delete(this.tokenKeyName);
+    this.cookieService.deleteAll();
+    this.cookieService.delete( this.tokenKeyName, '/' );
   }
 
 }

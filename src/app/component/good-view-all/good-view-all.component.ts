@@ -16,6 +16,7 @@ export class GoodViewAllComponent implements OnInit {
   sanitize(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
+
   constructor(private goodService: GoodService, private router: Router, private sanitizer: DomSanitizer) {
     this.goodService.GetDemandsByCurrentUser().subscribe((res) => {
       this.demands = JSON.parse(JSON.stringify(res));

@@ -71,11 +71,11 @@
     <div *ngFor="let su of supplies; ">
 
       <div class="card text-left">
-        <img [src]="su.images[0]" class="card-img-top" alt="..." style="height: 15rem;">
+        <img [src]="su.images[0]" class="card-img-top" alt="..." style="width: auto; height: 10rem; ">
         <div class="card-body">
 
-          <h5 class="card-title">{{ su.base.name }}</h5>
-          <h5 class="d-inline card-text" style="float:left;color:red;">￥{{ su.price }}</h5>
+          <p class="card-title">{{ su.base.name }}</p>
+          <p class="d-inline card-text" style="float:left;color:red;">￥{{ su.price }}</p>
           <p class="d-inline card-text" style="padding-left: 10pt; color:grey;text-decoration:line-through;">
             ￥{{ su.originalPrice }}</p>
           <!--
@@ -88,12 +88,12 @@
                   -->
         </div>
         <div class="row no-gutters" style="background-color:rgba(0, 0, 0, 0.03)">
-          <div class="col-3">
+          <div class="col-2">
               <a href="#">
               <img class="img-fluid" [src]="sanitize(su.publisherHp)" class="card-img-top" alt="su.publisherName">
               </a>
             </div>
-            <div class="col-8">
+            <div class="col-9">
                 <div class="card-block px-2">
                   <small class="text-muted">
                     <a href="#">{{su.publisherName}}</a> 发布于 <br>

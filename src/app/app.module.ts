@@ -20,6 +20,8 @@ import { LoginComponent } from './component/user/login/login.component';
 import { SpaceComponent } from './component/user/space/space.component';
 import { IndexComponent } from './component/index/index.component';
 import { GoodViewAllComponent } from './component/good-view-all/good-view-all.component';
+import { CookiePolicyDetailsComponent } from './component/cookie-policy-details/cookie-policy-details.component';
+import { GoodViewDetailComponent } from './component/good-view-detail/good-view-detail.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { GoodViewAllComponent } from './component/good-view-all/good-view-all.co
     LoginComponent,
     SpaceComponent,
     IndexComponent,
-    GoodViewAllComponent
+    GoodViewAllComponent,
+    CookiePolicyDetailsComponent,
+    GoodViewDetailComponent
   ],
   imports: [
     BrowserModule,
