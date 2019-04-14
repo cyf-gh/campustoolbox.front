@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {
   HttpClient, HttpHeaders
 } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-happy-handing-in-upload',
@@ -25,6 +26,15 @@ export class HappyHandingInUploadComponent implements OnInit {
   ngOnInit() {
     this.workId = this.routeInfo.snapshot.queryParams['id'];
     this.workName = this.routeInfo.snapshot.queryParams['name'];
+    this.http.post(environment.apiUtilsHHIGetImages,
+      {
+        "taskModel": 0
+      }
+    ).subscribe((res) => {
+      let uploaded: PPHappyHandingInModel.GetUploadedImagesModel = JSON.parse( JSON.stringify(res) );
+      this.images = uploaded.images;
+    });
+    // load uploaded images
   }
 
   addImage() {
@@ -86,17 +96,21 @@ export class HappyHandingInUploadComponent implements OnInit {
     for (let i = 0; i < this.images.length; ++i) {
       formData.append(i.toString(), this.images[i]);
     }
+
     if (window.confirm('请确保正在提交的作业和需要提交的照片\n确认开始提交？')) {
-      this.http.post('https://localhost:5001/api/utils/hhi/upload-images',
-        formData,
+      this.http.post(environment.apiUtilsHHIUploadImages,
+        {
+          "images": this.images,
+          "taskId": 0
+        }, environment.httpOptions
       ).subscribe((res: Response) => { });
     } else {
       return;
     }
   }
 
-  removeImage(key) {
-    this.images.splice(key, 1)
+  removeImage( key ) {
+    this.images.splice( key, 1 );
   }
 
   removeAll() {

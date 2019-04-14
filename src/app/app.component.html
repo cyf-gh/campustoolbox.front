@@ -69,7 +69,8 @@
     <div *ngIf="!this.cpService.confirmedUsingCookie()">
         <div class="alert alert-info alert-dismissible fade show" role="alert">
                 <strong>继续访问即代表您同意使用Cookie服务，</strong>
-                有关本网站更详细的Cookie信息，请访问<a href=[routerLink]="[ '/policy/cookie' ] class="alert-link">这里</a>。
+                有关本网站更详细的Cookie信息，请访问
+                <a [routerLink]="[ '/policy/cookie' ]" class="alert-link">这里</a>
                 <br>
                 我们的网站使用 Cookie 以区分您与我们网站的其他用户。这可以帮助我们在您浏览我们网站时向您提供良好体验并帮助我们改进我们的网站。
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="this.confirmCookiePolicy()">

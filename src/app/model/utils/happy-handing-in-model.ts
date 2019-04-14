@@ -6,4 +6,14 @@ namespace PPHappyHandingInModel {
         description: string;
         deadLine: Date;
     }
+
+    export interface UploadImageModel {
+        images: string[];
+        taskId: number;
+    }
+
+    export interface GetUploadedImagesModel {
+        images: string[];
+        lastCommitedTime: Date;
+    }
 }

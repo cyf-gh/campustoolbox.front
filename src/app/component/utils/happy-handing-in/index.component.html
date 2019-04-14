@@ -16,8 +16,9 @@
             <span class="badge badge-pill badge-danger">未提交</span>
             <div class="dropdown-divider"></div>
             <h5 class="card-text"><small class="text-muted">{{work.description}}</small></h5>
-            <small class="text-muted">截止日期： {{work.deadLine}}</small>
+            <small class="text-muted">截止日期： {{work.deadLine| date:'yyyy-MM-dd HH:mm'}}</small>
         </a>
+        <br>
     </div>
 
     <router-outlet></router-outlet>

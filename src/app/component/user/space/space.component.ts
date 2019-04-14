@@ -88,7 +88,6 @@ export class SpaceComponent implements OnInit {
     } else {
       alert("没有修改信息");
     }
-    window.location.reload();
   }
 
   signout() {

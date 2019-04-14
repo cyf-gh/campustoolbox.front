@@ -10,12 +10,16 @@ const api_login = baseApi + "account/login";
 const api_reflect_account_by_token = baseApi + "token/reflect-account";
 const api_account_info_update = baseApi + "user/modify-info";
 
+const api_utils_hhi_upload_images = baseApi + "utils/hhi/upload/images";
+const api_utils_hhi_get_images = baseApi + "utils/hhi/get/images";
+
 const api_get_supplies = baseApi + "trade/supplies";
 const api_get_demands = baseApi + "trade/demands";
 const api_get_static_data_provinces = baseApi + "static-data/cn-provinces";
 const api_get_static_data_areas = baseApi + "static-data/cn-areas";
 const api_get_static_data_colleges = baseApi + "static-data/cn-colleges";
 const api_get_static_data_grades = baseApi + "static-data/grades";
+
 export const environment = {
   production: false,
   regx_number: /^[0-9]*$/,
@@ -35,6 +39,9 @@ export const environment = {
   apiGetStaticDataAreas: api_get_static_data_areas,
   apiGetStaticColleges: api_get_static_data_colleges,
   apiGetStaticGrades: api_get_static_data_grades,
+
+  apiUtilsHHIUploadImages: api_utils_hhi_upload_images,
+  apiUtilsHHIGetImages: api_utils_hhi_get_images,
 
   httpOptions:  {
     withCredentials: true
