@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-hhi-image',
@@ -14,8 +14,12 @@ export class HappyHandingInUploadImageComponent implements OnInit {
 
   constructor() { }
 
+  @Output() private deleteImageEvent = new EventEmitter();
 
   ngOnInit() {
   }
 
+  deleteThis() {
+    this.deleteImageEvent.emit(this.imageIndex);
+  }
 }

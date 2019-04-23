@@ -15,26 +15,11 @@
   </div>
 </div>
 
-<style>
-  @media screen and (max-width: 600px) {
-
-    /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
-    .card-columns {
-      column-count: 2;
-    }
-  }
-
-  @media screen and (min-width: 600px) {
-    .card-columns {
-      column-count: 4;
-    }
-  }
-</style>
 <div class="container" style="padding-top: 2rem">
   <div class="card-columns">
     <div *ngFor="let de of demands; ">
 
-      <div class="card text-left">
+      <div class="card text-left" id="id_demand_card">
         <div class="card-body">
 
           <h5 class="card-title">{{ de.base.name }}</h5>
@@ -71,7 +56,7 @@
     <div *ngFor="let su of supplies; ">
 
       <div class="card text-left">
-        <img [src]="su.images[0]" class="card-img-top" alt="..." style="width: auto; height: 10rem; ">
+        <img [src]="su.images[0]" class="card-img-top" alt="...">
         <div class="card-body">
 
           <p class="card-title">{{ su.base.name }}</p>

@@ -23,3 +23,9 @@ export interface ppDemand {
     publisherName: string;
     publisherHp: string;
 }
+
+export interface ppDemandPublishModel {
+    base: ppBase;
+    accecptablePriceMin: number;
+    accecptablePriceMax: number;
+}

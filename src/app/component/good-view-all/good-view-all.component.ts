@@ -6,7 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-good-view-all',
   templateUrl: './good-view-all.component.html',
-  styleUrls: ['./good-view-all.component.sass']
+  styleUrls: ['./good-view-all.component.css']
 })
 export class GoodViewAllComponent implements OnInit {
 

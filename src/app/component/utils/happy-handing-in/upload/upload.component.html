@@ -87,15 +87,13 @@
     </div>
     <br>
     <br>
-    
-        <div class="card-columns">
-            <div id="id-images" *ngFor="let image of images;let key=index;">
-                <app-hhi-image [imageIndex]="key" [imageType]="imageType" [imageQuality]="imageQuality"
-                    [imageSource]="image"></app-hhi-image>
-                <button class="btn btn-warning btn-lg btn-block" type="button" (click)="removeImage(key)">移除</button>
-                <br>
-                <br>
-            </div>
+
+    <div class="card-columns">
+        <div id="id-images" *ngFor="let image of images;let key=index;">
+            <app-hhi-image [imageIndex]="key" [imageType]="imageType" [imageQuality]="imageQuality" [imageSource]="image" (deleteImageEvent)="removeImage(key)"></app-hhi-image>
+            <br>
+            <br>
+        </div>
     </div>
     <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="doUpload()">提交</button>
 </div>

@@ -23,14 +23,18 @@ import { RegisterComponent } from './component/user/register/register.component'
 import { SpaceComponent } from './component/user/space/space.component';
 import { IndexComponent } from './component/index/index.component';
 import { GoodViewAllComponent } from './component/good-view-all/good-view-all.component';
+import { GoodPublishComponent } from './component/good-publish/good-publish.component';
 
 const routes: Routes = [
   { path: 'home', component: GoodViewAllComponent },
   { path: 'good/detail', component: GoodViewDetailComponent },
-  { path: 'utils', component:  UtilsComponent, children:[] },
-  { path: 'utils/happy-handing-in', component: HappyHandingInComponent, children: [
-    { path: 'admin', component:  HhiAdminComponent, children:[] }
-  ], canActivate: [LoginGuard] },
+  { path: 'good/publish', component: GoodPublishComponent, canActivate: [LoginGuard] },
+  { path: 'utils', component: UtilsComponent, children: [] },
+  {
+    path: 'utils/happy-handing-in', component: HappyHandingInComponent, children: [
+      { path: 'admin', component: HhiAdminComponent, children: [] }
+    ], canActivate: [LoginGuard]
+  },
   { path: 'utils/happy-handing-in/upload', component: HappyHandingInUploadComponent, canActivate: [LoginGuard] },
   { path: 'utils/happy-handing-in/admin/create/work', component: CreateWorkComponent, canActivate: [HappyHandingInAdminGuard] },
   { path: 'utils/happy-handing-in/admin/create/prefix', component: CreatePrefixComponent, canActivate: [HappyHandingInAdminGuard] },
@@ -39,7 +43,7 @@ const routes: Routes = [
   { path: 'user/register', component: RegisterComponent },
   { path: 'user/space', component: SpaceComponent, canActivate: [LoginGuard] },
   { path: 'policy/cookie', component: CookiePolicyDetailsComponent },
-  { path: '**', component: IndexComponent, children:[] }
+  { path: '**', component: IndexComponent, children: [] }
 ];
 
 @NgModule({

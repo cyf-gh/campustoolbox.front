@@ -1,10 +1,5 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <style>
-        body {
-            background-color: darkslategray;
-        }
-    </style>
 </head>
 
 <body>
@@ -47,6 +42,7 @@
             <ul class="navbar-nav">
                         <div class="dropdown-divider"></div>
                 <div *ngIf="isLogin && userInfo!=undefined">
+                    <a class="p-2 text-blue" [routerLink]="[ '/good/publish' ]">上架宝贝</a>
                     <a class="navbar-brand" [routerLink]="[ '/user/space' ]">
                         <img [src]="sanitize(userInfo.absVisiable.hp)" width="30" height="30" class="d-inline-block align-top" alt="">
                         {{userInfo.absVisiable.nickName}}
@@ -78,7 +74,6 @@
                 </button>
         </div>
     </div>
-
     <router-outlet></router-outlet>
     <p class="mt-5 mb-3 text-muted text-center">&copy;cyf 2019</p>
 </div>

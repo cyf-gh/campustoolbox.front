@@ -1,12 +1,14 @@
 
-<div class="card text-center">
-  <img id="img-new" [src]="imageSource" class="card-img-top">
+<div class="card h-100 text-center">
   <div class="card-body">
-      <h5 id="img-new-index" class="card-title">{{imageIndex}}</h5>
+      <img id="img-new" [src]="imageSource" class="card-img-top">
       <!--
 
         <p id="img-new-type" class="card-text">{{imageType}}</p>
         <p id="img-new-qul" class="card-text">{{imageQuality}}</p>
       -->
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="deleteThis()">
+          <span aria-hidden="true">&times;</span>
+      </button>
   </div>
 </div>
