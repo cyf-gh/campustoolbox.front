@@ -23,12 +23,12 @@
         <div class="card-body">
 
           <h5 class="card-title">{{ de.base.name }}</h5>
-          <ng-container *ngIf="de.accecptablePriceMax == de.accecptablePriceMin; else is_acce_equal_else">
-            <h5 class="d-inline card-text" style="float:left;color:green;">￥{{ de.accecptablePriceMin }}</h5>
+          <ng-container *ngIf="de.priceMax == de.priceMin; else is_acce_equal_else">
+            <h5 class="d-inline card-text" style="float:left;color:green;">￥{{ de.priceMin }}</h5>
           </ng-container>
           <ng-template #is_acce_equal_else>
-            <h5 class="d-inline card-text" style="float:left;color:green;">￥{{ de.accecptablePriceMin }} ~
-              ￥{{ de.accecptablePriceMax }}</h5>
+            <h5 class="d-inline card-text" style="float:left;color:green;">￥{{ de.priceMin }} ~
+              ￥{{ de.priceMax }}</h5>
           </ng-template>
           
           <!--
@@ -60,9 +60,9 @@
         <div class="card-body">
 
           <p class="card-title">{{ su.base.name }}</p>
-          <p class="d-inline card-text" style="float:left;color:red;">￥{{ su.price }}</p>
+          <p class="d-inline card-text" style="float:left;color:red;">￥{{ su.priceMin }}</p>
           <p class="d-inline card-text" style="padding-left: 10pt; color:grey;text-decoration:line-through;">
-            ￥{{ su.originalPrice }}</p>
+            ￥{{ su.priceMax }}</p>
           <!--
                     <ng-container *ngIf="su.base.isAvailable; else elseTemplate">
                       <a href="#" class="btn btn-primary">购买</a>

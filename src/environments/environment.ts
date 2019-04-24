@@ -20,6 +20,18 @@ const api_get_static_data_areas = baseApi + "static-data/cn-areas";
 const api_get_static_data_colleges = baseApi + "static-data/cn-colleges";
 const api_get_static_data_grades = baseApi + "static-data/grades";
 
+const api_get_own_demands = baseApi + "trade/own-demands";
+const api_get_own_supplies = baseApi + "trade/own-supplies";
+
+const api_publish_demand = baseApi + "trade/publish-demand";
+const api_publish_supply = baseApi + "trade/publish-supply";
+
+const api_modify_demand = baseApi + "trade/modify-demand";
+const api_modify_supply = baseApi + "trade/modify-supply";
+
+const api_delete_demand = baseApi + "trade/delete-demand";
+const api_delete_supply = baseApi + "trade/delete-supply";
+
 export const environment = {
   production: false,
   regx_number: /^[0-9]*$/,
@@ -39,9 +51,19 @@ export const environment = {
   apiGetStaticDataAreas: api_get_static_data_areas,
   apiGetStaticColleges: api_get_static_data_colleges,
   apiGetStaticGrades: api_get_static_data_grades,
+  apiGetOwnSupplies: api_get_own_supplies,
+  apiGetOwnDemands: api_get_own_demands,
 
   apiUtilsHHIUploadImages: api_utils_hhi_upload_images,
   apiUtilsHHIGetImages: api_utils_hhi_get_images,
+
+  apiPublishDemand: api_publish_demand,
+  apiPublishSupply: api_publish_supply,
+  apiDeleteDemand: api_delete_demand,
+  apiDeleteSupply: api_delete_supply,
+
+  apiModifyDemand: api_modify_demand,
+  apiModifySupply: api_modify_supply,
 
   httpOptions:  {
     withCredentials: true

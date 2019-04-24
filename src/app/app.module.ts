@@ -23,6 +23,7 @@ import { GoodViewAllComponent } from './component/good-view-all/good-view-all.co
 import { CookiePolicyDetailsComponent } from './component/cookie-policy-details/cookie-policy-details.component';
 import { GoodViewDetailComponent } from './component/good-view-detail/good-view-detail.component';
 import { GoodPublishComponent } from './component/good-publish/good-publish.component';
+import { OwnGoodsComponent } from './component/user/own-goods/own-goods.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { GoodPublishComponent } from './component/good-publish/good-publish.comp
     GoodViewAllComponent,
     CookiePolicyDetailsComponent,
     GoodViewDetailComponent,
-    GoodPublishComponent
+    GoodPublishComponent,
+    OwnGoodsComponent
   ],
   imports: [
     BrowserModule,

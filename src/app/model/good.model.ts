@@ -10,22 +10,41 @@ export interface ppBase {
 export interface ppSupply {
     base: ppBase;
     images: string[];
-    originalPrice: number;
-    price: number;
+    priceMax: number;
+    priceMin: number;
+    publisherName: string;
+    publisherHp: string;
+}
+
+export interface ppSupplyWithId {
+    id: number
+    base: ppBase;
+    images: string[];
+    priceMax: number;
+    priceMin: number;
     publisherName: string;
     publisherHp: string;
 }
 
 export interface ppDemand {
     base: ppBase;
-    accecptablePriceMin: number;
-    accecptablePriceMax: number;
+    priceMin: number;
+    priceMax: number;
+    publisherName: string;
+    publisherHp: string;
+}
+
+export interface ppDemandWithId {
+    id: number;
+    base: ppBase;
+    priceMin: number;
+    priceMax: number;
     publisherName: string;
     publisherHp: string;
 }
 
 export interface ppDemandPublishModel {
     base: ppBase;
-    accecptablePriceMin: number;
-    accecptablePriceMax: number;
+    priceMin: number;
+    priceMax: number;
 }

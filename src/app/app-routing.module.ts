@@ -1,3 +1,4 @@
+import { OwnGoodsComponent } from './component/user/own-goods/own-goods.component';
 import { GoodViewDetailComponent } from './component/good-view-detail/good-view-detail.component';
 import { CookiePolicyDetailsComponent } from './component/cookie-policy-details/cookie-policy-details.component';
 import { NgModule } from '@angular/core';
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'user/login', component: LoginComponent },
   { path: 'user/register', component: RegisterComponent },
   { path: 'user/space', component: SpaceComponent, canActivate: [LoginGuard] },
+  { path: 'user/own-goods', component: OwnGoodsComponent, canActivate: [LoginGuard] },
   { path: 'policy/cookie', component: CookiePolicyDetailsComponent },
   { path: '**', component: IndexComponent, children: [] }
 ];
