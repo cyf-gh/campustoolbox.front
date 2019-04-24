@@ -29,6 +29,10 @@
         column-count: 5;
     }
 }
+
+.row {
+    display: inline-flex;
+}
 .card {
     height: 100%;
 }

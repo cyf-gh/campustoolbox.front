@@ -9,7 +9,8 @@
       <label class="form-check-label" for="priceUpDown2">降序</label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="priceUpDown" id="priceUpDown3" value="option3" checked="checked">
+      <input class="form-check-input" type="radio" name="priceUpDown" id="priceUpDown3" value="option3"
+        checked="checked">
       <label class="form-check-label" for="priceUpDown3">默认</label>
     </div>
   </div>
@@ -19,36 +20,37 @@
   <div class="card-columns">
     <div *ngFor="let de of demands; ">
 
-      <div class="card text-left" id="id_demand_card">
+      <div class="card text-left">
         <div class="card-body">
 
           <h5 class="card-title">{{ de.base.name }}</h5>
           <ng-container *ngIf="de.priceMax == de.priceMin; else is_acce_equal_else">
-            <h5 class="d-inline card-text" style="float:left;color:green;">￥{{ de.priceMin }}</h5>
+            <p class="d-inline card-text" style="float:left;color:green;">￥{{ de.priceMin }}</p>
           </ng-container>
           <ng-template #is_acce_equal_else>
-            <h5 class="d-inline card-text" style="float:left;color:green;">￥{{ de.priceMin }} ~
-              ￥{{ de.priceMax }}</h5>
+            <p class="d-inline card-text" style="float:left;color:green;">￥{{ de.priceMin }} ~
+              ￥{{ de.priceMax }}</p>
           </ng-template>
-          
-          <!--
-                  <ng-container *ngIf="de.base.isAvailable; else elseTemplate">
-                    <a href="#" class="btn btn-primary">购买</a>
-                  </ng-container>
-                  <ng-template #elseTemplate>
-                    <a href="#" class="btn disabled">卖掉了</a>
-                  </ng-template>
-                -->
-          <br>
+          <p></p>
         </div>
-        <div class="card-footer">
-          <!-- 发布者头像 -->
-          <small class="text-muted"><a href="#">{{ de.publisherName }}</a> 发布于
-            {{ de.base.publishDate | date:'yyyy-MM-dd HH:mm' }}</small>
+
+        <div class="row no-gutters" style="background-color:rgba(0, 0, 0, 0.03)">
+            <div class="col-2">
+              <a href="#">
+                <img class="img-fluid" [src]="sanitize(de.publisherHp)" class="card-img-top" alt="de.publisherName">
+              </a>
+            </div>
+            <div class="col-9">
+              <div class="card-block px-2">
+                <small class="text-muted">
+                  <a href="#">{{de.publisherName}}</a> 发布于 <br>
+                  {{ de.base.publishDate | date:'yyyy-MM-dd HH:mm' }}
+                </small>
+              </div>
+            </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 <div class="container" style="padding-top: 2rem">
@@ -74,18 +76,18 @@
         </div>
         <div class="row no-gutters" style="background-color:rgba(0, 0, 0, 0.03)">
           <div class="col-2">
-              <a href="#">
+            <a href="#">
               <img class="img-fluid" [src]="sanitize(su.publisherHp)" class="card-img-top" alt="su.publisherName">
-              </a>
+            </a>
+          </div>
+          <div class="col-9">
+            <div class="card-block px-2">
+              <small class="text-muted">
+                <a href="#">{{su.publisherName}}</a> 发布于 <br>
+                {{ su.base.publishDate | date:'yyyy-MM-dd HH:mm' }}
+              </small>
             </div>
-            <div class="col-9">
-                <div class="card-block px-2">
-                  <small class="text-muted">
-                    <a href="#">{{su.publisherName}}</a> 发布于 <br>
-                    {{ su.base.publishDate | date:'yyyy-MM-dd HH:mm' }}
-                  </small>
-                </div>
-            </div>
+          </div>
         </div>
       </div>
     </div>
