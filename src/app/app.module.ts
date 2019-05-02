@@ -24,6 +24,7 @@ import { CookiePolicyDetailsComponent } from './component/cookie-policy-details/
 import { GoodViewDetailComponent } from './component/good-view-detail/good-view-detail.component';
 import { GoodPublishComponent } from './component/good-publish/good-publish.component';
 import { OwnGoodsComponent } from './component/user/own-goods/own-goods.component';
+import { PpSelectProvinceComponent } from './component/_part/pp-select-province/pp-select-province.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { OwnGoodsComponent } from './component/user/own-goods/own-goods.componen
     CookiePolicyDetailsComponent,
     GoodViewDetailComponent,
     GoodPublishComponent,
-    OwnGoodsComponent
+    OwnGoodsComponent,
+    PpSelectProvinceComponent
   ],
   imports: [
     BrowserModule,

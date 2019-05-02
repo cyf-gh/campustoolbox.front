@@ -16,8 +16,6 @@ export class RegisterComponent implements OnInit {
   provinceAreas: ppArea[];
   allGrades: ppGrade[];
 
-  allColleges: ppCollege[];
-
   constructor( private fb: FormBuilder, private accountServices: AccountService ) { 
     this.formModel = fb.group({
       nickName: ['', Validators.required],
@@ -37,10 +35,6 @@ export class RegisterComponent implements OnInit {
     });
     accountServices.GetAreas().subscribe( ( res ) => {
       this.allAreas = JSON.parse( JSON.stringify( res ) );
-    });
-    accountServices.GetColleges().subscribe( ( res ) => {
-      this.allColleges = JSON.parse( JSON.stringify( res ) );
-      this.allColleges.sort((a, b) => a.name.localeCompare(b.name, 'zh-Hans-CN', {sensitivity: 'accent'}));
     });
     accountServices.GetGrades().subscribe( ( res ) => {
       this.allGrades = JSON.parse( JSON.stringify( res ) );
