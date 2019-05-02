@@ -34,6 +34,7 @@ export class GoodViewAllComponent implements OnInit {
   private getTime(date?: Date) {
     return date != null ? date.getTime() : 0;
   }
+  
   public sortByDate() {
     this.demands.sort((a: ppDemand, b: ppDemand) => {
       return this.getTime(a.base.publishDate) - this.getTime(b.base.publishDate);

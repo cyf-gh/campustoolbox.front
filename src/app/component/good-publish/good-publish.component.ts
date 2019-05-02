@@ -2,12 +2,10 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserInfo } from 'src/app/model/user.model';
 import { AccountService } from './../../service/account/account.service';
-import { ppBase, ppDemand, ppDemandPublishModel } from './../../model/good.model';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ImageService } from 'src/app/service/image/image.service';
 import { environment } from 'src/environments/environment';
-import { stringify } from 'querystring';
 import { GoodService } from 'src/app/service/good.service';
 
 @Component({
