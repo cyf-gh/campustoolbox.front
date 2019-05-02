@@ -25,7 +25,13 @@ import { GoodViewDetailComponent } from './component/good-view-detail/good-view-
 import { GoodPublishComponent } from './component/good-publish/good-publish.component';
 import { OwnGoodsComponent } from './component/user/own-goods/own-goods.component';
 import { PpSelectProvinceComponent } from './component/_part/pp-select-province/pp-select-province.component';
+import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+/** 配置 angular i18n **/
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
 
 @NgModule({
   declarations: [
@@ -55,8 +61,16 @@ import { PpSelectProvinceComponent } from './component/_part/pp-select-province/
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    /** 导入 ng-zorro-antd 模块 **/
+    NgZorroAntdModule,
+    /** 导入 ng-zorro-antd-mobile 模块 **/
+    NgZorroAntdMobileModule,
+    BrowserAnimationsModule
   ],
-  providers: [ CookieService ],
+  providers: [ 
+    CookieService,
+    { provide: NZ_I18N, useValue: zh_CN }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

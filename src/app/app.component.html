@@ -1,20 +1,22 @@
+<!--
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
-<body>
-        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+<body>    
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" [routerLink]="[ '' ]">CampusToolbox</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" [routerLink]="[ '' ]">CampusToolbox</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="dropdown-divider"></div>
-            <!--
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="dropdown-divider"></div>
+                <!--
                             <div class="form-row" style="padding-left:1rem">
                                 <div class="col-auto">
                                     <input class="form-control" type="search" placeholder="(=￣ω￣=)" aria-label="(=￣ω￣=)">
@@ -23,60 +25,114 @@
                                     <button class="btn btn-outline-success" type="submit">搜索</button>
                                 </div>
                             </div>
-                        -->
-            <ul class="navbar-nav mr-auto">
-                <a class="nav-link" [routerLink]="[ '/home' ]">首页 <span class="sr-only">(current)</span></a>
-                <a class="nav-link" href="#col-goods-catalog" role="button" aria-expanded="false"
-                    aria-controls="collapseExample" data-toggle="collapse">商品分类 <span
-                        class="sr-only">(current)</span></a>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">小工具</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" [routerLink]="[ '/utils/happy-handing-in' ]">快乐交作业</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" [routerLink]="[ '/utils' ]">查看所有小工具</a>
+                <ul class="navbar-nav mr-auto">
+                    <a class="nav-link" [routerLink]="[ '/home' ]">首页 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#col-goods-catalog" role="button" aria-expanded="false"
+                        aria-controls="collapseExample" data-toggle="collapse">商品分类 <span
+                            class="sr-only">(current)</span></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">小工具</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" [routerLink]="[ '/utils/happy-handing-in' ]">快乐交作业</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" [routerLink]="[ '/utils' ]">查看所有小工具</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <div class="dropdown-divider"></div>
+                    <div *ngIf="isLogin && userInfo!=undefined">
+                        <a class="p-2 text-blue" [routerLink]="[ '/good/publish' ]">上架宝贝</a>
+                        <a class="p-2 text-dark" [routerLink]="[ '/user/own-goods' ]">我的宝贝</a>
+                        <a class="navbar-brand" [routerLink]="[ '/user/space' ]">
+                            <img [src]="sanitize(userInfo.absVisiable.hp)" width="30" height="30"
+                                class="d-inline-block align-top" alt="">
+                            {{userInfo.absVisiable.nickName}}
+                        </a>
                     </div>
-                </li>
-            </ul>
-            <ul class="navbar-nav">
-                        <div class="dropdown-divider"></div>
-                <div *ngIf="isLogin && userInfo!=undefined">
-                    <a class="p-2 text-blue" [routerLink]="[ '/good/publish' ]">上架宝贝</a>
-                    <a class="p-2 text-dark" [routerLink]="[ '/user/own-goods' ]">我的宝贝</a>
-                    <a class="navbar-brand" [routerLink]="[ '/user/space' ]">
-                        <img [src]="sanitize(userInfo.absVisiable.hp)" width="30" height="30" class="d-inline-block align-top" alt="">
-                        {{userInfo.absVisiable.nickName}}
-                    </a>
-                </div>
-                <div *ngIf="!isLogin">
-                    <a class="d-inline-block nav-link" [routerLink]="[ '/user/login' ]">登陆 <span class="sr-only">(current)</span></a>
-                    <a class="d-inline-block nav-link" [routerLink]="[ '/user/register' ]">注册 <span class="sr-only">(current)</span></a>
-                </div>
-            </ul>
+                    <div *ngIf="!isLogin">
+                        <a class="d-inline-block nav-link" [routerLink]="[ '/user/login' ]">登陆 <span
+                                class="sr-only">(current)</span></a>
+                        <a class="d-inline-block nav-link" [routerLink]="[ '/user/register' ]">注册 <span
+                                class="sr-only">(current)</span></a>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+        <div class="collapse" id="col-goods-catalog">
+            <div class="card card-body">
+                <a class="nav-link" href="#">面料 <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">书籍 <span class="sr-only">(current)</span></a>
+            </div>
         </div>
-    </nav>
-    <div class="collapse" id="col-goods-catalog">
-        <div class="card card-body">
-            <a class="nav-link" href="#">面料 <span class="sr-only">(current)</span></a>
-            <a class="nav-link" href="#">书籍 <span class="sr-only">(current)</span></a>
-        </div>
-    </div>
 
-    <div *ngIf="!this.cpService.confirmedUsingCookie()">
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <div *ngIf="!this.cpService.confirmedUsingCookie()">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
                 <strong>继续访问即代表您同意使用Cookie服务，</strong>
                 有关本网站更详细的Cookie信息，请访问
                 <a [routerLink]="[ '/policy/cookie' ]" class="alert-link">这里</a>
                 <br>
                 我们的网站使用 Cookie 以区分您与我们网站的其他用户。这可以帮助我们在您浏览我们网站时向您提供良好体验并帮助我们改进我们的网站。
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="this.confirmCookiePolicy()">
-                  <span aria-hidden="true">&times;</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                    (click)="this.confirmCookiePolicy()">
+                    <span aria-hidden="true">&times;</span>
                 </button>
+            </div>
         </div>
+        <router-outlet></router-outlet>
+        <p class="mt-5 mb-3 text-muted text-center">&copy;cyf 2019</p>
     </div>
-    <router-outlet></router-outlet>
-    <p class="mt-5 mb-3 text-muted text-center">&copy;cyf 2019</p>
-</div>
 
 </body>
+-->
+<nz-layout>
+    <!-- 导航菜单 -->
+    <div nz-row nzType="flex" nzJustify="space-between">
+        <!-- 功能导航菜单 -->
+        <div nz-col>
+            <ul nz-menu [nzTheme]="'light'" [nzMode]="'horizontal'" style="line-height: 32px;">
+                <li nz-menu-item>
+                    <h4>CampusToolbox</h4>
+                </li>
+                <li nz-menu-item [routerLink]="[ '/home' ]">home</li>
+            </ul>
+        </div>
+        <div nz-col>
+            <!-- 登陆后显示的项 -->
+            <div *ngIf="isLogin && userInfo!=undefined">
+                <ul nz-menu [nzTheme]="'light'" [nzMode]="'horizontal'" style="line-height: 32px;">
+                    <li nz-menu-item [routerLink]="[ '/good/publish' ]">上架宝贝</li>
+                    <li nz-menu-item [routerLink]="[ '/user/own-goods' ]">我的宝贝</li>
+                    <li nz-menu-item [routerLink]="[ '/user/space' ]">
+                        <nz-avatar [nzIcon]="user" [nzSrc]="sanitize(userInfo.absVisiable.hp)"></nz-avatar>
+                        {{userInfo.absVisiable.nickName}}
+                    </li>
+                </ul>
+            </div>
+            <!-- 未登录的情况下 -->
+            <div *ngIf="!isLogin">
+                <ul nz-menu [nzTheme]="'light'" [nzMode]="'horizontal'" style="line-height: 32px;">
+                    <li nz-menu-item [routerLink]="[ '/user/login' ]">登陆 <span class="sr-only">(current)</span></li>
+                    <li nz-menu-item [routerLink]="[ '/user/register' ]">注册 <span class="sr-only">(current)</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nz-content>
+        <div *ngIf="!this.cpService.confirmedUsingCookie()">
+            <nz-alert nzType="warning" nzCloseable nzShowIcon
+                nzMessage="继续访问即代表您同意使用Cookie服务"
+                nzDescription="我们的网站使用 Cookie 以区分您与我们网站的其他用户。这可以帮助我们在您浏览我们网站时向您提供良好体验并帮助我们改进我们的网站。"
+                (nzOnClose)="this.confirmCookiePolicy()">
+            </nz-alert>
+        </div>
+        <router-outlet></router-outlet>
+    </nz-content>
+
+    <nz-footer>
+        <p class="mt-5 mb-3 text-muted text-center">&copy;cyf 2019</p>
+    </nz-footer>
+
+</nz-layout>

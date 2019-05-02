@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
     this.formModel = this.fb.group ( {
       loginName:           ['', Validators.required],
       password:            ['', Validators.required],
-      loginBy: [1]
+      loginBy: [1],
+      remember: [true]
     } );
   }
 
@@ -30,6 +31,10 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin() {
+    for (const i in this.formModel.controls) {
+      this.formModel.controls[i].markAsDirty();
+      this.formModel.controls[i].updateValueAndValidity();
+    }
     return this.account.Login( this.formModel, this.keepLogin );
   }
 }
